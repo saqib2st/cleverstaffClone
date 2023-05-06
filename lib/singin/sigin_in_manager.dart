@@ -19,13 +19,11 @@ class _SignInManagerScreenState extends State<SignInManagerScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    print("TabController created.");
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-    print("TabController disposed.");
     super.dispose();
   }
 

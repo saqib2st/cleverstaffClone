@@ -38,13 +38,14 @@ dependencies:
   google_fonts: ^4.0.4
   intl_phone_field: ^3.1.0
   country_code_picker: ^3.0.0
+  pinput: ^2.2.31
+  flutter_svg: ^2.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  dependencies:
-  flutter_svg: ^2.0.5
+  
   
 
   # The "flutter_lints" package below contains a set of recommended lints to

@@ -1,9 +1,8 @@
-import 'package:clevestaff/screen/home.dart';
-import 'package:clevestaff/singin/sigin_in_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../config/apptheme.dart';
+import '../singin/sigin_in_manager.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});

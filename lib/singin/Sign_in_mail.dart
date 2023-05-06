@@ -1,4 +1,5 @@
 import 'package:clevestaff/config/apptheme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignInManagerWithMail extends StatefulWidget {
@@ -141,11 +142,17 @@ class _SignInManagerWithMailState extends State<SignInManagerWithMail> {
                       ),
                     ),
                     TextSpan(
-                        text: 'sign up',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: AppColor.primaryColor,
-                            fontWeight: FontWeight.bold))
+                      text: 'sign up',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: AppColor.primaryColor,
+                          fontWeight: FontWeight.bold),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pushNamed(context,
+                              '/signup1'); // replace '/signup' with your desired route name
+                        },
+                    )
                   ]),
                 ),
               ],
