@@ -1,9 +1,13 @@
+import 'package:clevestaff/Provider/Sign_up_todos_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../config/apptheme.dart';
 
 class PersonalInfo extends StatefulWidget {
-  const PersonalInfo({super.key});
+  const PersonalInfo({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<PersonalInfo> createState() => _PersonalInfoState();
@@ -19,6 +23,7 @@ class _PersonalInfoState extends State<PersonalInfo>
 
   @override
   Widget build(BuildContext context) {
+    final counter = Provider.of<SignUpProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Column(
@@ -114,65 +119,6 @@ class _PersonalInfoState extends State<PersonalInfo>
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 220),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  height: 40,
-                  width: 90,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: AppColor.disableTextColor,
-                        width: 2,
-                      )),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(
-                        context,
-                      );
-                    },
-                    style: const ButtonStyle(
-                      elevation: null,
-                      backgroundColor:
-                          MaterialStatePropertyAll(AppColor.scaffoldBackground),
-                    ),
-                    child: Text(
-                      'Cancel',
-                      style: TextStyle(color: AppColor.primaryColor),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  height: 40,
-                  width: 90,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: AppColor.primaryColor,
-                        width: 2,
-                      )),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: const ButtonStyle(
-                      elevation: null,
-                      backgroundColor:
-                          MaterialStatePropertyAll(AppColor.scaffoldBackground),
-                    ),
-                    child: Text(
-                      'Next',
-                      style: TextStyle(color: AppColor.primaryColor0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );

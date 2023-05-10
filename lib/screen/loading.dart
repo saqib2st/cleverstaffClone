@@ -15,7 +15,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 15)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

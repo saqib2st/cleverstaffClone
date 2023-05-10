@@ -139,90 +139,90 @@ class _AccountInfoState extends State<AccountInfo>
             ),
           ),
           const SizedBox(height: 80),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  height: 40,
-                  width: 90,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: AppColor.primaryColor,
-                        width: 2,
-                      )),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      widget.tabController
-                          ?.animateTo(widget.tabController!.index - 1);
-                    },
-                    style: const ButtonStyle(
-                      elevation: null,
-                      backgroundColor:
-                          MaterialStatePropertyAll(AppColor.scaffoldBackground),
-                    ),
-                    child: Text(
-                      'Back',
-                      style: TextStyle(color: AppColor.primaryColor0),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 40,
-                  width: 90,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: AppColor.disableTextColor,
-                        width: 2,
-                      )),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(
-                        context,
-                      );
-                    },
-                    style: const ButtonStyle(
-                      elevation: null,
-                      backgroundColor:
-                          MaterialStatePropertyAll(AppColor.scaffoldBackground),
-                    ),
-                    child: Text(
-                      'Cancel',
-                      style: TextStyle(color: AppColor.primaryColor),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 40,
-                  width: 90,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: AppColor.primaryColor,
-                        width: 2,
-                      )),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      widget.tabController
-                          ?.animateTo(widget.tabController!.index + 1);
-                    },
-                    style: const ButtonStyle(
-                      elevation: null,
-                      backgroundColor:
-                          MaterialStatePropertyAll(AppColor.scaffoldBackground),
-                    ),
-                    child: Text(
-                      'Next',
-                      style: TextStyle(color: AppColor.primaryColor0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
+          // Expanded(
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     crossAxisAlignment: CrossAxisAlignment.end,
+          //     children: [
+          //       Container(
+          //         height: 40,
+          //         width: 90,
+          //         decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(5),
+          //             border: Border.all(
+          //               color: AppColor.primaryColor,
+          //               width: 2,
+          //             )),
+          //         child: ElevatedButton(
+          //           onPressed: () {
+          //             widget.tabController
+          //                 ?.animateTo(widget.tabController!.index - 1);
+          //           },
+          //           style: const ButtonStyle(
+          //             elevation: null,
+          //             backgroundColor:
+          //                 MaterialStatePropertyAll(AppColor.scaffoldBackground),
+          //           ),
+          //           child: Text(
+          //             'Back',
+          //             style: TextStyle(color: AppColor.primaryColor0),
+          //           ),
+          //         ),
+          //       ),
+          //       Container(
+          //         height: 40,
+          //         width: 90,
+          //         decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(5),
+          //             border: Border.all(
+          //               color: AppColor.disableTextColor,
+          //               width: 2,
+          //             )),
+          //         child: ElevatedButton(
+          //           onPressed: () {
+          //             Navigator.pop(
+          //               context,
+          //             );
+          //           },
+          //           style: const ButtonStyle(
+          //             elevation: null,
+          //             backgroundColor:
+          //                 MaterialStatePropertyAll(AppColor.scaffoldBackground),
+          //           ),
+          //           child: Text(
+          //             'Cancel',
+          //             style: TextStyle(color: AppColor.primaryColor),
+          //           ),
+          //         ),
+          //       ),
+          //       Container(
+          //         height: 40,
+          //         width: 90,
+          //         decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(5),
+          //             border: Border.all(
+          //               color: AppColor.primaryColor,
+          //               width: 2,
+          //             )),
+          //         child: ElevatedButton(
+          //           onPressed: () {
+          //             widget.tabController
+          //                 ?.animateTo(widget.tabController!.index + 1);
+          //           },
+          //           style: const ButtonStyle(
+          //             elevation: null,
+          //             backgroundColor:
+          //                 MaterialStatePropertyAll(AppColor.scaffoldBackground),
+          //           ),
+          //           child: Text(
+          //             'Next',
+          //             style: TextStyle(color: AppColor.primaryColor0),
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );
