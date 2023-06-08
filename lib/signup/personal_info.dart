@@ -23,6 +23,7 @@ class _PersonalInfoState extends State<PersonalInfo>
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     final counter = Provider.of<SignUpProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(18.0),
@@ -82,9 +83,9 @@ class _PersonalInfoState extends State<PersonalInfo>
           const SizedBox(
             height: 5,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
                 'Frist Name',
                 style: TextStyle(fontWeight: FontWeight.bold),

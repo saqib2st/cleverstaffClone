@@ -146,7 +146,7 @@ class _VeriFicationState extends State<VeriFication>
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Navigator.pushNamed(context,
-                              '/signup1'); // replace '/signup' with your desired route name
+                              '/signup1'); 
                         },
                     ),
                   ]),
@@ -154,67 +154,6 @@ class _VeriFicationState extends State<VeriFication>
               ],
             ),
             const SizedBox(height: 110),
-            // Row(
-            //   crossAxisAlignment: CrossAxisAlignment.end,
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     Container(
-            //       height: 40,
-            //       width: 90,
-            //       decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(5),
-            //           border: Border.all(
-            //             color: AppColor.primaryColor,
-            //             width: 2,
-            //           )),
-            //       child: ElevatedButton(
-            //         onPressed: () {
-            //           widget.tabController
-            //               ?.animateTo(widget.tabController!.index - 1);
-            //         },
-            //         style: const ButtonStyle(
-            //           elevation: null,
-            //           backgroundColor:
-            //               MaterialStatePropertyAll(AppColor.scaffoldBackground),
-            //         ),
-            //         child: Text(
-            //           'Back',
-            //           style: TextStyle(color: AppColor.primaryColor0),
-            //         ),
-            //       ),
-            //     ),
-            //     Container(
-            //       height: 40,
-            //       width: 90,
-            //       decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(5),
-            //           border: Border.all(
-            //             color: AppColor.disableTextColor,
-            //             width: 2,
-            //           )),
-            //       child: ElevatedButton(
-            //         onPressed: () {
-            //           Navigator.pop(
-            //             context,
-            //           );
-            //         },
-            //         style: const ButtonStyle(
-            //           elevation: null,
-            //           backgroundColor:
-            //               MaterialStatePropertyAll(AppColor.scaffoldBackground),
-            //         ),
-            //         child: Text(
-            //           'Cancel',
-            //           style: TextStyle(color: AppColor.primaryColor),
-            //         ),
-            //       ),
-            //     ),
-            //     const SizedBox(
-            //       height: 40,
-            //       width: 90,
-            //     ),
-            //   ],
-            // )
           ],
         ),
       ),

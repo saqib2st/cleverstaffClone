@@ -53,17 +53,18 @@ class _SignInManagerWithPhoneState extends State<SignInManagerWithPhone> {
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
                     children: [
-                      const SizedBox(
+                      Container(
+                        decoration: BoxDecoration(
+                            border: BorderDirectional(
+                                bottom: BorderSide(
+                                    color: AppColor.appGrey, width: 2))),
                         width: 130,
+                        height: 50,
                         child: CountryCodePicker(
-                          onChanged: print,
-                          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                          initialSelection: 'IT',
-                          favorite: ['+39', 'FR'],
-                          countryFilter: ['IT', 'FR'],
-                          showFlagDialog: true,
+                          showFlagDialog: false,
                           showDropDownButton: true,
                           showCountryOnly: true,
+                          initialSelection: countryCode.toString(),
                         ),
                       ),
                       const SizedBox(
@@ -81,8 +82,8 @@ class _SignInManagerWithPhoneState extends State<SignInManagerWithPhone> {
                     ],
                   ),
                 ),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     SizedBox(
                       width: 20,
                     ),

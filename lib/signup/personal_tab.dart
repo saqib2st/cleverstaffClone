@@ -17,8 +17,8 @@ class _PersonalTabsState extends State<PersonalTabs> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, value, child) {
-        return Row(
-          children: const [
+        return const Row(
+          children: [
             Text("Personal view 1"),
           ],
         );

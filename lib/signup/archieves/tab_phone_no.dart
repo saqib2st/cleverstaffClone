@@ -83,9 +83,9 @@ class _PhoneInfoState extends State<PhoneInfo> {
           const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 'Country Code',
                 style: TextStyle(fontWeight: FontWeight.bold),

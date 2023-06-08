@@ -78,9 +78,9 @@ class _SalaryInfoState extends State<SalaryInfo> {
           const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 'Bank',
                 style: TextStyle(fontWeight: FontWeight.bold),

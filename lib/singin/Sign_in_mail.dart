@@ -66,8 +66,8 @@ class _SignInManagerWithMailState extends State<SignInManagerWithMail> {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Text(
                       'E-Mail',
                       style: TextStyle(fontWeight: FontWeight.bold),

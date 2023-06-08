@@ -33,9 +33,9 @@ class _SignInManagerScreenState extends State<SignInManagerScreen>
       appBar: AppBar(
         backgroundColor: AppColor.primarybackgroundColor,
         toolbarHeight: 250,
-        title: Center(
+        title: const Center(
           child: Column(
-            children: const [
+            children: [
               Image(image: AssetImage('assets/images/Group 11.png')),
             ],
           ),

@@ -18,7 +18,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  int _activePage = 0;
   final _pageController = PageController();
   final List<Widget> screens = [
     const PersonalInfo(),
@@ -37,6 +36,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     final counter = Provider.of<SignUpProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -54,7 +54,7 @@ class _SignUpState extends State<SignUp> {
                   text: 'Sign up',
                 ),
                 TextSpan(
-                  text: '  ${_activePage + 1}/5',
+                  text: '  ${counter.activePage + 1}/5',
                   style: TextStyle(
                     color: AppColor.primaryColor,
                   ),
@@ -86,32 +86,20 @@ class _SignUpState extends State<SignUp> {
                         decoration: BoxDecoration(
                             border: BorderDirectional(
                           bottom: BorderSide(
-                            color: _activePage == 0 && index == 0 ||
-                                    _activePage == 1 && index == 0 ||
-                                    _activePage == 2 && index == 1 ||
-                                    _activePage == 3 && index == 2 ||
-                                    _activePage == 4 && index == 2
-                                ? AppColor.primaryColor
-                                : AppColor.scaffoldBackground,
+                            color: counter.getBottomBorderColor(index),
                           ),
                         )),
                         height: 25,
                         child: SvgPicture.asset(
                           tabIcons[index],
-                          color: _activePage == 0 && index == 0 ||
-                                  _activePage == 1 && index == 0 ||
-                                  _activePage == 2 && index == 1 ||
-                                  _activePage == 3 && index == 2 ||
-                                  _activePage == 4 && index == 2
-                              ? AppColor.primaryColor
-                              : AppColor.appGrey,
+                          color: counter.getSVGcolor(index, counter.activePage),
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-              _activePage < 2
+              counter.activePage < 2
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -120,7 +108,7 @@ class _SignUpState extends State<SignUp> {
                             decoration: BoxDecoration(
                                 border: BorderDirectional(
                               bottom: BorderSide(
-                                  color: _activePage == 0
+                                  color: counter.activePage == 0
                                       ? AppColor.primaryColor
                                       : AppColor.appGrey),
                             )),
@@ -129,7 +117,7 @@ class _SignUpState extends State<SignUp> {
                               '1.Personal',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: _activePage == 0
+                                  color: counter.activePage == 0
                                       ? AppColor.primaryColor
                                       : AppColor.appGrey),
                               textAlign: TextAlign.center,
@@ -141,7 +129,7 @@ class _SignUpState extends State<SignUp> {
                             decoration: BoxDecoration(
                                 border: BorderDirectional(
                               bottom: BorderSide(
-                                  color: _activePage == 1
+                                  color: counter.activePage == 1
                                       ? AppColor.primaryColor
                                       : AppColor.appGrey),
                             )),
@@ -150,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                               '2.Acccount',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: _activePage == 1
+                                  color: counter.activePage == 1
                                       ? AppColor.primaryColor
                                       : AppColor.appGrey),
                               textAlign: TextAlign.center,
@@ -159,7 +147,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ],
                     )
-                  : _activePage == 2
+                  : counter.activePage == 2
                       ? Row(
                           children: [
                             Expanded(
@@ -167,7 +155,7 @@ class _SignUpState extends State<SignUp> {
                                 decoration: BoxDecoration(
                                     border: BorderDirectional(
                                   bottom: BorderSide(
-                                      color: _activePage == 2
+                                      color: counter.activePage == 2
                                           ? AppColor.primaryColor
                                           : AppColor.appGrey),
                                 )),
@@ -176,7 +164,7 @@ class _SignUpState extends State<SignUp> {
                                   '3.Salary',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: _activePage == 2
+                                      color: counter.activePage == 2
                                           ? AppColor.primaryColor
                                           : AppColor.appGrey),
                                   textAlign: TextAlign.center,
@@ -193,7 +181,7 @@ class _SignUpState extends State<SignUp> {
                                 decoration: BoxDecoration(
                                     border: BorderDirectional(
                                   bottom: BorderSide(
-                                      color: _activePage == 3
+                                      color: counter.activePage == 3
                                           ? AppColor.primaryColor
                                           : AppColor.appGrey),
                                 )),
@@ -202,7 +190,7 @@ class _SignUpState extends State<SignUp> {
                                   '4.Phone',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: _activePage == 3
+                                      color: counter.activePage == 3
                                           ? AppColor.primaryColor
                                           : AppColor.appGrey),
                                   textAlign: TextAlign.center,
@@ -214,7 +202,7 @@ class _SignUpState extends State<SignUp> {
                                 decoration: BoxDecoration(
                                     border: BorderDirectional(
                                   bottom: BorderSide(
-                                      color: _activePage == 4
+                                      color: counter.activePage == 4
                                           ? AppColor.primaryColor
                                           : AppColor.appGrey),
                                 )),
@@ -223,7 +211,7 @@ class _SignUpState extends State<SignUp> {
                                   '5.Verification',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: _activePage == 4
+                                      color: counter.activePage == 4
                                           ? AppColor.primaryColor
                                           : AppColor.appGrey),
                                   textAlign: TextAlign.center,
@@ -243,7 +231,7 @@ class _SignUpState extends State<SignUp> {
             itemCount: screens.length,
             onPageChanged: (int page) {
               setState(() {
-                _activePage = page;
+                counter.activePage = page;
               });
             },
             itemBuilder: (context, index) {
@@ -258,20 +246,27 @@ class _SignUpState extends State<SignUp> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  // style:ButtonStyle(
-                  //   backgroundColor:_activePage<1?
-                  //   AppColor.disableButtonColor:
-                  //   AppColor.primaryColor;
-                  // ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return AppColor.primaryColor.withOpacity(0.5);
+                        }
+                        return counter.activePage < 1
+                            ? AppColor.appGrey
+                            : AppColor.primaryColor;
+                      },
+                    ),
+                  ),
                   onPressed: () {
-                    if (_activePage > 0) {
+                    if (counter.activePage > 0) {
                       _pageController.animateToPage(
-                        _activePage - 1,
+                        counter.activePage - 1,
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeIn,
                       );
                       setState(() {
-                        _activePage -= 1;
+                        counter.decrementPage();
                       });
                     }
                   },
@@ -285,18 +280,18 @@ class _SignUpState extends State<SignUp> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (_activePage < screens.length - 1) {
+                    if (counter.activePage < screens.length - 1) {
                       _pageController.animateToPage(
-                        _activePage + 1,
+                        counter.activePage + 1,
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeIn,
                       );
                       setState(() {
-                        _activePage += 1;
+                        counter.incrementPage();
                       });
                     } else {}
                   },
-                  child: _activePage == screens.length - 1
+                  child: counter.activePage == screens.length - 1
                       ? const Text('Submit')
                       : const Text('Next'),
                 ),
@@ -308,246 +303,3 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
-
-// class SignUp extends StatefulWidget {
-//   const SignUp({Key? key}) : super(key: key);
-
-//   @override
-//   State<SignUp> createState() => _SignUpState();
-// }
-
-// class _SignUpState extends State<SignUp> {
-//   List<String> tabIcons = [
-//     StaticAssets.personIcon,
-//     StaticAssets.salaryIcon,
-//     StaticAssets.phoneIcon,
-//   ];
-//   List<Widget> screens = [
-//     const PersonalInfo(),
-//     const AccountInfo(),
-//     const SalaryInfo(),
-//     const PhoneInfo(),
-//     const VeriFication()
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     // final formkeystate = Provider.of<FormKeys>(context);
-//     final counter = Provider.of<SignUpProvider>(context);
-//     // final cubit = BlocProvider.of<AppCubit>(context);
-
-//     return Scaffold(
-//       backgroundColor: AppColor.primarybackgroundColor,
-//       resizeToAvoidBottomInset: true,
-//       appBar: AppBar(
-//         centerTitle: false,
-//         leadingWidth: 0,
-//         toolbarHeight: 56,
-//         elevation: 1,
-//         backgroundColor: AppColor.primarybackgroundColor,
-//         title: RichText(
-//           text: TextSpan(
-//               style: TextStyle(
-//                   color: AppColor.textColor,
-//                   fontSize: 22,
-//                   fontWeight: FontWeight.bold,
-//                   fontFamily: 'Lato'),
-//               children: [
-//                 const TextSpan(
-//                   text: 'Sign up',
-//                 ),
-//                 TextSpan(
-//                   text: '  ${counter.counter}/5',
-//                   style: TextStyle(
-//                     color: AppColor.primaryColor,
-//                   ),
-//                 ),
-//               ]),
-//         ),
-//         bottom: PreferredSize(
-//           preferredSize: const Size.fromHeight(400),
-//           child: SizedBox(
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 Row(
-//                     children: tabIcons
-//                         .asMap()
-//                         .entries
-//                         .map(
-//                           (e) => IconTab(
-//                               iconPath: e.value,
-//                               color: e.key == counter.currentIconTab
-//                                   ? AppColor.primaryColor
-//                                   : AppColor.dividerColor),
-//                         )
-//                         .toList()),
-//                 Expanded(
-//                   child: PageView(
-//                     physics: const NeverScrollableScrollPhysics(),
-//                     controller: counter.controller,
-//                     onPageChanged: (value) => setState(() {
-//                       counter.currentIconTab = value;
-//                     }),
-//                     children: const [
-//                       PersonalTabs(),
-//                       PersonalTabs(),
-//                       PersonalTabs(),
-//                       // SalaryTab(),
-//                       // VerificationTabs()
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//       body: PageView(
-//         physics: const NeverScrollableScrollPhysics(),
-//         controller: counter.signupPageController,
-//         children: const [
-//           PersonalInfo(),
-//           AccountInfo(),
-//           SalaryInfo(),
-//           PhoneInfo(),
-//           VeriFication(),
-//         ],
-//       ),
-//       bottomNavigationBar: SafeArea(
-//         child: Padding(
-//           padding:
-//               const EdgeInsets.symmetric(horizontal: 20).copyWith(bottom: 10),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: const [
-//               // Row(
-//               //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               //   children: [
-//               //     Container(
-//               //       height: 40,
-//               //       width: 90,
-//               //       decoration: BoxDecoration(
-//               //           borderRadius: BorderRadius.circular(5),
-//               //           border: Border.all(
-//               //             color: AppColor.primaryColor,
-//               //             width: 2,
-//               //           )),
-//               //       child: ElevatedButton(
-//               //         onPressed: () {},
-//               //         style: const ButtonStyle(
-//               //           elevation: null,
-//               //           backgroundColor: MaterialStatePropertyAll(
-//               //               AppColor.scaffoldBackground),
-//               //         ),
-//               //         child: Text(
-//               //           'Back',
-//               //           style: TextStyle(color: AppColor.primaryColor0),
-//               //         ),
-//               //       ),
-//               //     ),
-//               //     Container(
-//               //       height: 40,
-//               //       width: 90,
-//               //       decoration: BoxDecoration(
-//               //           borderRadius: BorderRadius.circular(5),
-//               //           border: Border.all(
-//               //             color: AppColor.disableTextColor,
-//               //             width: 2,
-//               //           )),
-//               //       child: ElevatedButton(
-//               //         onPressed: () {
-//               //           Navigator.pop(
-//               //             context,
-//               //           );
-//               //         },
-//               //         style: const ButtonStyle(
-//               //           elevation: null,
-//               //           backgroundColor: MaterialStatePropertyAll(
-//               //               AppColor.scaffoldBackground),
-//               //         ),
-//               //         child: Text(
-//               //           'Cancel',
-//               //           style: TextStyle(color: AppColor.primaryColor),
-//               //         ),
-//               //       ),
-//               //     ),
-//               //     Container(
-//               //       height: 40,
-//               //       width: 90,
-//               //       decoration: BoxDecoration(
-//               //           borderRadius: BorderRadius.circular(5),
-//               //           border: Border.all(
-//               //             color: AppColor.primaryColor,
-//               //             width: 2,
-//               //           )),
-//               //       child: ElevatedButton(
-//               //         onPressed: () {},
-//               //         style: const ButtonStyle(
-//               //           elevation: null,
-//               //           backgroundColor: MaterialStatePropertyAll(
-//               //               AppColor.scaffoldBackground),
-//               //         ),
-//               //         child: Text(
-//               //           'Next',
-//               //           style: TextStyle(color: AppColor.primaryColor0),
-//               //         ),
-//               //       ),
-//               //     ),
-//               //   ],
-//               // )
-//               // counter.counter > 1
-//               //     ? CustomButton(
-//               //         onPressed: () {
-//               //           counter.onPressedPrevious();
-//               //         },
-//               //         color: AppColor.primaryColor,
-//               //         buttonName: 'Previous',
-//               //         height: UI.height! * 0.06,
-//               //         width: UI.width! * 0.3,
-//               //       )
-//               //     : CustomButton(
-//               //         color: AppColor.hintTextColor,
-//               //         buttonName: 'Previous ',
-//               //         height: UI.height! * 0.06,
-//               //         width: UI.width! * 0.3,
-//               //       ),
-//               // ClickableText(
-//               //   onPressed: () {
-//               //     counter.cancelAll(context);
-//               //     counter.isEmailAvailable = true;
-//               //     Navigator.pop(context);
-//               //   },
-//               //   name: 'Cancel',
-//               //   color: AppColor.appGrey,
-//               //   underline: false,
-//               // ),
-//               // (counter.count < 5 && counter.isEmailAvailable)
-//               //     ? CustomButton(
-//               //         onPressed: () {
-//               //           if (counter.count == 4) {
-//               //             formkeystate.signUpFormkey.currentState?.save();
-//               //             final String cc = formkeystate.signUpFormkey
-//               //                 .currentState?.value['country_code'];
-//               //           } else {
-//               //             counter.onPressedNext();
-//               //           }
-//               //         },
-//               //         color: AppColor.primaryColor,
-//               //         buttonName: 'Next',
-//               //         height: 22,
-//               //         width: 18,
-//               //       )
-//               //     : CustomButton(
-//               //         color: AppColor.punchColor,
-//               //         buttonName: 'Next',
-//               //         height: 22,
-//               //         width: 18,
-//               //       ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
